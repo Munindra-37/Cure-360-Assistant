@@ -1,0 +1,315 @@
+/* AarogyaConnect 360 - Custom Styling & Animations */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --primary-blue: #0284c7;
+  --primary-teal: #0d9488;
+  --emergency-red: #ef4444;
+  --success-emerald: #10b981;
+  --warning-amber: #f59e0b;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Glassmorphism cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+.glass-dark-card {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+}
+
+/* Pulse animation for emergency buttons */
+@keyframes emergency-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(239, 68, 68, 0);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    transform: scale(1);
+  }
+}
+
+.animate-emergency-beacon {
+  animation: emergency-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Voice wave pulse */
+@keyframes voice-wave {
+  0%, 100% { height: 8px; }
+  50% { height: 32px; }
+}
+
+.wave-bar {
+  animation: voice-wave 1.2s ease-in-out infinite;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.wave-bar:nth-child(4) { animation-delay: 0.45s; }
+.wave-bar:nth-child(5) { animation-delay: 0.6s; }
+
+/* Custom Progress Bar for Queue */
+.queue-progress-bar {
+  background: linear-gradient(90deg, #0284c7 0%, #0d9488 50%, #10b981 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Leaflet custom map marker container */
+.custom-leaflet-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid #0284c7;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Badge styles */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ==========================================================
+   Home Dashboard Styles (matching uploaded screenshot)
+========================================================== */
+.hero-bg-container {
+  background: radial-gradient(circle at 35% 35%, rgba(224, 242, 254, 0.75) 0%, rgba(240, 249, 255, 0.5) 45%, #f8fafc 100%);
+  position: relative;
+  border-radius: 1.75rem;
+  overflow: hidden;
+}
+
+.medical-cross {
+  position: absolute;
+  color: rgba(56, 189, 248, 0.22);
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.voice-orb-hero {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.voice-orb-ring-outer {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(186, 230, 253, 0.7);
+  background: radial-gradient(circle, rgba(224, 242, 254, 0.35) 0%, rgba(240, 249, 255, 0.1) 70%, transparent 100%);
+  animation: orb-pulse 3s infinite ease-in-out;
+}
+
+.voice-orb-ring-mid {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(125, 211, 252, 0.85);
+  background: rgba(224, 242, 254, 0.55);
+  animation: orb-pulse 2.2s infinite ease-in-out reverse;
+}
+
+.voice-orb-inner {
+  position: relative;
+  z-index: 10;
+  width: 114px;
+  height: 114px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 40%, #0284c7 75%, #2563eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 25px -4px rgba(2, 132, 199, 0.45);
+}
+
+.voice-orb-inner:hover {
+  transform: scale(1.06);
+  box-shadow: 0 16px 32px -4px rgba(2, 132, 199, 0.6);
+}
+
+@keyframes orb-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.home-nav-card {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 1.125rem;
+  padding: 1.25rem 0.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+}
+
+.home-nav-card:hover {
+  border-color: #7dd3fc;
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.08), 0 8px 10px -6px rgba(2, 132, 199, 0.04);
+  transform: translateY(-2px);
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================
+   CARE-360 Premium Design System (Matching Uploaded Screenshot)
+========================================================== */
+
+.care360-canvas-card {
+  background: radial-gradient(circle at 50% 30%, #ffffff 0%, #f9fbfb 65%, #f4f8f8 100%);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Voice Orb */
+.care360-voice-orb {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.care360-arc-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: orb-gentle-rotate 24s linear infinite;
+}
+
+@keyframes orb-gentle-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.care360-orb-glow {
+  position: absolute;
+  width: 154px;
+  height: 154px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(13, 148, 136, 0.2) 0%, rgba(45, 212, 191, 0.06) 65%, transparent 100%);
+  animation: orb-glow-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes orb-glow-pulse {
+  0%, 100% {
+    transform: scale(0.98);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.care360-orb-center {
+  position: relative;
+  z-index: 10;
+  width: 102px;
+  height: 102px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 60%, #047857 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px -4px rgba(13, 148, 136, 0.45);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.care360-voice-orb:hover .care360-orb-center {
+  transform: scale(1.06);
+  box-shadow: 0 18px 36px -4px rgba(13, 148, 136, 0.6);
+}
+
+.care360-vitals-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.care360-vitals-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.08);
+}
+
+.care360-action-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.care360-action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.08);
+}
